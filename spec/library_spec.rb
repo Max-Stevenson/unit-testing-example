@@ -24,4 +24,17 @@ describe Library do
 			expect(library.list_books).to include(book)
 		end
 	end
+	# Method name tested
+	describe '#find_book' do
+		# Explanation of expected method behavior
+		it 'returns a book matching the title' do
+			# Arrange
+			book = {title: 'find me', author: 'test', subject: 'test'}
+			library = Library.new
+			# Act
+			library.add_book(book)
+			# Assert
+			expect(library.find_book('find me')).to eq(book)
+		end
+	end
 end
