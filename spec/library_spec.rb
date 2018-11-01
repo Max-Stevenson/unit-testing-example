@@ -11,6 +11,7 @@ describe Library do
 			expect(library.list_books).to eq(library.books)
 		end
 	end
+
 	# Method name tested
 	describe '#add_book' do
 		# Explanation of expected method behavior
@@ -24,6 +25,7 @@ describe Library do
 			expect(library.list_books).to include(book)
 		end
 	end
+
 	# Method name tested
 	describe '#find_book' do
 		# Explanation of expected method behavior
@@ -37,4 +39,18 @@ describe Library do
 			expect(library.find_book('find me')).to eq(book)
 		end
 	end
+
+	# Method name tested
+	describe '#remove_book' do
+		# Explanation of expected method behavior
+		it 'removes the matching book from books' do
+			# Arrange
+			library = Library.new
+			# Act
+			library.remove_book("POODR")
+			# Assert
+			expect(library.books).not_to include("POODR")
+		end
+	end
+
 end
