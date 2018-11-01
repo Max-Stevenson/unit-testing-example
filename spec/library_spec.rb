@@ -46,11 +46,26 @@ describe Library do
 		it 'removes the matching book from books' do
 			# Arrange
 			library = Library.new
+			book = {title: 'find me', author: 'test', subject: 'test'}
 			# Act
-			library.remove_book("POODR")
+			library.add_book(book)
+			library.remove_book('find me')
 			# Assert
-			expect(library.books).not_to include("POODR")
+			expect(library.books).not_to include('find me')
 		end
 	end
 
+	# Method name tested
+	describe '#all_books_by_subject' do
+		# Explanation of expected method behavior
+		it 'returns all books matching subject' do
+			# Arrange
+			library = Library.new
+			book = {title: 'find me', author: 'test', subject: 'test'}
+			# Act
+			library.add_book(book)
+			# Assert
+			expect(library.all_books_by_subject('test')[0]).to eq(book)
+		end
+	end
 end
