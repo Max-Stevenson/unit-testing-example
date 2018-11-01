@@ -1,6 +1,7 @@
 require 'library'
 	
 describe Library do 
+	let(:book) { {title: 'test book' , author: 'me' , subject: 'test' } }
 	# Method name tested
 	describe '#list_books' do
 		# Explanation of expected method behavior
@@ -17,7 +18,6 @@ describe Library do
 		# Explanation of expected method behavior
 		it 'adds a new book object to books' do
 			# Arrange
-			book = {title: 'I am a book', author: 'test', subject: 'test'}
 			library = Library.new
 			# Act
 			library.add_book(book)
@@ -31,12 +31,11 @@ describe Library do
 		# Explanation of expected method behavior
 		it 'returns a book matching the title' do
 			# Arrange
-			book = {title: 'find me', author: 'test', subject: 'test'}
 			library = Library.new
 			# Act
 			library.add_book(book)
 			# Assert
-			expect(library.find_book('find me')).to eq(book)
+			expect(library.find_book('test book')).to eq(book)
 		end
 	end
 
@@ -46,12 +45,11 @@ describe Library do
 		it 'removes the matching book from books' do
 			# Arrange
 			library = Library.new
-			book = {title: 'find me', author: 'test', subject: 'test'}
 			# Act
 			library.add_book(book)
-			library.remove_book('find me')
+			library.remove_book('test book')
 			# Assert
-			expect(library.books).not_to include('find me')
+			expect(library.books).not_to include('test book')
 		end
 	end
 
@@ -61,7 +59,6 @@ describe Library do
 		it 'returns all books matching subject' do
 			# Arrange
 			library = Library.new
-			book = {title: 'find me', author: 'test', subject: 'test'}
 			# Act
 			library.add_book(book)
 			# Assert
